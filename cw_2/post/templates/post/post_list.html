@@ -1,0 +1,20 @@
+{% extends 'post/base.html' %}
+
+{% block title %}Список постов{% endblock %}
+
+{% block content %}
+<h2>Список постов</h2>
+<a href="{% url 'post_create' %}" class="btn btn-primary mb-3">Создать пост</a>
+<ul class="list-group">
+    {% for post in posts %}
+        <li class="list-group-item">
+            <h5><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
+            <p>{{ post.description|truncatewords:20 }}</p>
+            <small class="text-muted">Автор: {{ post.author }}</small>
+            <div class="mt-2">
+                <a href="{% url 'post_delete' post.id %}" class="btn btn-danger btn-sm">Удалить</a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

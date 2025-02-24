@@ -1,0 +1,24 @@
+{% extends 'post/base.html' %}
+
+{% block title %}Создать пост{% endblock %}
+
+{% block content %}
+<h2>Создать пост</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">Заголовок</label>
+        {{ form.title }}
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Описание</label>
+        {{ form.description }}
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Автор</label>
+        {{ form.author }}
+    </div>
+    <button type="submit" class="btn btn-success">Создать</button>
+    <a href="{% url 'post_list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}
