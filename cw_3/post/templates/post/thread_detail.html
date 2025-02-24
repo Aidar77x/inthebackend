@@ -1,0 +1,24 @@
+{% extends "post/base.html" %}
+
+{% block content %}
+<h2>{{ thread.name }}</h2>
+<p>{{ thread.description }}</p>
+
+<h3>Посты:</h3>
+<ul class="list-group">
+    {% for post in posts %}
+        <li class="list-group-item">
+            <strong>{{ post.title }}</strong> - {{ post.author }}<br>
+            {{ post.description }}
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- Форма создания поста -->
+<h3>Добавить пост</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Опубликовать</button>
+</form>
+{% endblock %}

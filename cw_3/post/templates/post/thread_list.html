@@ -1,0 +1,20 @@
+{% extends "post/base.html" %}
+
+{% block content %}
+<h2>Список тредов</h2>
+<ul class="list-group">
+    {% for thread in threads %}
+        <li class="list-group-item">
+            <a href="{% url 'thread_detail' thread.id %}">{{ thread.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- Форма создания треда -->
+<h3>Создать новый тред</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Создать</button>
+</form>
+{% endblock %}
