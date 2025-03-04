@@ -1,0 +1,11 @@
+<header>
+    <nav>
+        <a href="{% url 'posts' %}">Барлық посттар</a>
+        <a href="{% url 'my_posts' %}">Менің посттарым</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Шығу</a>
+        {% else %}
+            <a href="{% url 'login' %}">Кіру</a>
+        {% endif %}
+    </nav>
+</header>
